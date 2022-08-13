@@ -4,13 +4,56 @@ import { StyleSheet,
   View, 
   Image, 
   SafeAreaView, 
-  Platform } from 'react-native';
+  Platform, 
+  TextInput} from 'react-native';
 import PostItems from './src/components/postItems';
+import { EvilIcons, Entypo, Ionicons} from '@expo/vector-icons';
+
+
 
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewforDroid}>
-    <PostItems />
+      <View style={{
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        marginBottom: 10, 
+        backgroundColor: '#fec85c',
+        alignItems: 'center',
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 20}}>
+        <View style={{backgroundColor: 'white',
+          flexDirection: 'row',
+          margin: 10,
+          padding: 10,
+          borderRadius: 5
+        }}>
+          <EvilIcons name="search" size={24} color="black" />
+          <TextInput 
+          placeholder='Search Rent.com' 
+          style={{width: '100%', marginLeft: 5}}
+          multiline={false}
+          />
+        </View>
+        <View style={{
+          flexDirection: 'row', 
+          justifyContent: 'space-between', 
+          width: '100%',
+          paddingVertical: 10}}
+          >
+          <View style={{flexDirection: 'row'}}>
+          <Entypo name="location" size={24} color="black" />
+            <Text>Location</Text>
+            <Text style={{fontWeight: 'bold', marginLeft: 5}}>New York</Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+          <Ionicons name="options-sharp" size={24} color="black" />
+            <Text style={{marginLeft: 5}}>Category</Text>
+            <Text style={{marginRight: 5, fontWeight: 'bold', marginLeft: 5}}>Vehicle</Text>
+          </View>
+        </View>
+      </View>
+      <PostItems />
     </SafeAreaView>
   );
 }
@@ -60,5 +103,6 @@ const styles = StyleSheet.create({
   SafeAreaViewforDroid: {
     paddingTop: Platform.OS === 'android' ? 25 : 0,
     flex: 1,
+    backgroundColor: '#fec85c60'
   },
 });

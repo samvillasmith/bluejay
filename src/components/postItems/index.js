@@ -17,7 +17,7 @@ import { StyleSheet,
           style={styles.postImage}></Image>
           <View style={styles.postContentWrap}>
             <View>
-                <Text style={{fontWeight: "bold"}}> Properties for Rent</Text>
+                <Text style={{fontWeight: "bold"}}>Properties for Rent</Text>
                 <Text style={styles.postTitle}>New York</Text>
             </View>
             <Text style={styles.postValue}>$100 per day</Text>
