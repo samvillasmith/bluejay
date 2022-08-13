@@ -13,7 +13,7 @@ import { StyleSheet,
         <StatusBar style="auto" backgroundColor="#fec85c"/>
         <View style={styles.postWrap}>
           <Image 
-          source={{uri:"https://picsum.photos/200/300" }} 
+          source={{uri:"https://picsum.photos/200/300"}} 
           style={styles.postImage}></Image>
           <View style={styles.postContentWrap}>
             <View>

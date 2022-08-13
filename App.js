@@ -1,58 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, 
+import { 
+  StyleSheet, 
   Text, 
   View, 
   Image, 
   SafeAreaView, 
   Platform, 
   TextInput} from 'react-native';
-import PostItems from './src/components/postItems';
-import { EvilIcons, Entypo, Ionicons} from '@expo/vector-icons';
-
-
+  import { colors } from './model/color';
+  import PostItems from './src/components/postItems';
+  import HeaderForMobile from './src/components/HeaderForMobile';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewforDroid}>
-      <View style={{
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        marginBottom: 10, 
-        backgroundColor: '#fec85c',
-        alignItems: 'center',
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 20}}>
-        <View style={{backgroundColor: 'white',
-          flexDirection: 'row',
-          margin: 10,
-          padding: 10,
-          borderRadius: 5
-        }}>
-          <EvilIcons name="search" size={24} color="black" />
-          <TextInput 
-          placeholder='Search Rent.com' 
-          style={{width: '100%', marginLeft: 5}}
-          multiline={false}
-          />
-        </View>
-        <View style={{
-          flexDirection: 'row', 
-          justifyContent: 'space-between', 
-          width: '100%',
-          paddingVertical: 10}}
-          >
-          <View style={{flexDirection: 'row'}}>
-          <Entypo name="location" size={24} color="black" />
-            <Text>Location</Text>
-            <Text style={{fontWeight: 'bold', marginLeft: 5}}>New York</Text>
-          </View>
-          <View style={{flexDirection: 'row'}}>
-          <Ionicons name="options-sharp" size={24} color="black" />
-            <Text style={{marginLeft: 5}}>Category</Text>
-            <Text style={{marginRight: 5, fontWeight: 'bold', marginLeft: 5}}>Vehicle</Text>
-          </View>
-        </View>
-      </View>
+      <HeaderForMobile />
       <PostItems />
     </SafeAreaView>
   );
@@ -61,17 +23,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fec85c',
-    backgroundColor: "#fec85c60"
+    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary
   },
   postWrap: {
     display: "flex", 
     flexDirection: "row", 
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     marginVertical: 10,
     marginHorizontal: 10,
     borderRadius: 10,
-    shadowColor: 'black',
+    shadowColor: colors.black,
     shadowOffset: {width: 0, height: 1},
     shadowRadius: 2,
     shadowOpacity: 0.8,
@@ -90,19 +52,19 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
   },
   postValue: {
-        color: "#fec85c", 
-        backgroundColor: "#292341",
+        color: colors.primary, 
+        backgroundColor: colors.background,
         alignSelf: "flex-start", 
         padding: 5, 
         borderRadius: 10,
         overflow: 'hidden',
   },
   postTitle: {
-    color: "grey",
+    color: colors.grey,
   },
   SafeAreaViewforDroid: {
     paddingTop: Platform.OS === 'android' ? 25 : 0,
     flex: 1,
-    backgroundColor: '#fec85c60'
+    backgroundColor: colors.background
   },
 });
