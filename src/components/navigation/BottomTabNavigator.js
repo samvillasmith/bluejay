@@ -32,7 +32,7 @@ const Tab = createBottomTabNavigator();
         paddingBottom: 2,
         paddingTop: 2,}
     }}
-    sceneContainerStyle={{backgroundColor: colors.backgroundColor}}>
+    sceneContainerStyle={{backgroundColor: colors.primary}}>
         <Tab.Screen 
         name={"Explore"} 
         component={Home}

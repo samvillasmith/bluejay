@@ -4,7 +4,7 @@ import { colors } from "../../../model/color";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fec85c60"
+        backgroundColor: "#9ee8ff"
       },
       postWrap: {
         display: "flex", 
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
           paddingVertical: 10,
       },
       postValue: {
-            color: "#fec85c", 
-            backgroundColor: "#292341",
+            color: "#7ae0ff", 
+            backgroundColor: "#00c3ff ",
             alignSelf: "flex-start", 
             padding: 5, 
             borderRadius: 10,

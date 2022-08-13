@@ -12,6 +12,7 @@ import {
   import PostDetails from '../../screens/postDetails';
   import Home from '../../screens/Home';
   import BottomTabNav from './BottomTabNavigator';
+import { colors } from '../../../model/color';
 
 const Route =()=>{
 const Stack = createStackNavigator();
@@ -21,7 +22,7 @@ const Stack = createStackNavigator();
         <Stack.Navigator 
         screenOptions={{
           cardStyle: {
-            backgroundColor:"#fec85c60",
+            backgroundColor: colors.altenate
             },
           }}>
             <Stack.Screen name='Home' 
