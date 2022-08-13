@@ -1,23 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, 
+  Text, 
+  View, 
+  Image, 
+  SafeAreaView, 
+  Platform } from 'react-native';
+import PostItems from './src/components/postItems';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-        <StatusBar style="auto" />
-        <View style={{display: "flex", flexDirection: "row"}}>
-          <Image 
-          source={{uri:"https://picsum.photos/200/300" }} 
-          style={styles.postImage}></Image>
-          <View style={{ justifyContent: "space-around", paddingVertical: 10}}>
-            <View>
-                <Text>New Properties Available for Rent</Text>
-                <Text>New York</Text>
-            </View>
-            <Text>$100 per day</Text>
-          </View>
-      </View>
-    </View>
+    <SafeAreaView style={styles.SafeAreaViewforDroid}>
+    <PostItems />
+    </SafeAreaView>
   );
 }
 
@@ -25,15 +19,46 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fec85c',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "#fec85c10"
+    backgroundColor: "#fec85c60"
+  },
+  postWrap: {
+    display: "flex", 
+    flexDirection: "row", 
+    backgroundColor: 'white',
+    marginVertical: 10,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 1},
+    shadowRadius: 2,
+    shadowOpacity: 0.8,
+    elevation: 5
   },
   postImage: {
-    height: 100, 
-      width: 100, borderRadius: 30, 
+      height: 100, 
+      width: 100, 
+      borderRadius: 30, 
       marginLeft: 10, 
       marginRight: 20,
       marginVertical: 10
 },
+  postContentWrap: {
+      justifyContent: "space-around", 
+      paddingVertical: 10,
+  },
+  postValue: {
+        color: "#fec85c", 
+        backgroundColor: "#292341",
+        alignSelf: "flex-start", 
+        padding: 5, 
+        borderRadius: 10,
+        overflow: 'hidden',
+  },
+  postTitle: {
+    color: "grey",
+  },
+  SafeAreaViewforDroid: {
+    paddingTop: Platform.OS === 'android' ? 25 : 0,
+    flex: 1,
+  },
 });
