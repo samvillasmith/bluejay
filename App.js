@@ -11,7 +11,7 @@ export default function App() {
           style={styles.postImage}></Image>
           <View style={{ justifyContent: "space-around", paddingVertical: 10}}>
             <View>
-                <Text>Properties Available for Rent</Text>
+                <Text>New Properties Available for Rent</Text>
                 <Text>New York</Text>
             </View>
             <Text>$100 per day</Text>
