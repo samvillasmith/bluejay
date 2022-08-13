@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
       },
       postValue: {
             color: "#7ae0ff", 
-            backgroundColor: "#00c3ff ",
+            backgroundColor: colors.black,
             alignSelf: "flex-start", 
             padding: 5, 
             borderRadius: 10,

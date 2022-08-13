@@ -17,7 +17,7 @@ import {
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewforDroid}>
-      <StatusBar style="auto" backgroundColor="#fec85c"/>
+      <StatusBar style="auto" backgroundColor="#9ee8ff"/>
       <Route />
     </SafeAreaView>
   );
