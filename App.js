@@ -12,6 +12,7 @@ import {
   import PostItems from './src/components/postItems';
   import HeaderForMobile from './src/components/HeaderForMobile';
   import Route from './src/components/navigation/Router';
+  import 'react-native-gesture-handler';
 
 export default function App() {
   return (

@@ -3,12 +3,19 @@ import { StyleSheet,
   View, 
   Image, 
   SafeAreaView, 
-  Platform } from 'react-native';
+  Platform, 
+  Pressable } from 'react-native';
   import styles from './styles';
+  import { useNavigation } from '@react-navigation/native' 
+  import PostDetails from '../../screens/postDetails';
 
   const PostItems =()=>{
+    const navigation = useNavigation()
     return (
-        <View style={styles.container}>
+        <Pressable onPress={()=>{
+          navigation.navigate("PostDetails")
+
+        }} style={styles.container}>
        
         <View style={styles.postWrap}>
           <Image 
@@ -22,7 +29,7 @@ import { StyleSheet,
             <Text style={styles.postValue}>$100 per day</Text>
           </View>
       </View>
-    </View>
+    </Pressable>
     );
   }
 
