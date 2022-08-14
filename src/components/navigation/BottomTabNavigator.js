@@ -16,6 +16,7 @@ import { colors } from '../../../model/color';
 import { FontAwesome } from '@expo/vector-icons'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import Listing from '../../screens/Listing';
 
 
 
@@ -32,7 +33,7 @@ const Tab = createBottomTabNavigator();
         paddingBottom: 2,
         paddingTop: 2,}
     }}
-    sceneContainerStyle={{backgroundColor: colors.primary}}>
+    sceneContainerStyle={{backgroundColor: colors.alternate}}>
         <Tab.Screen 
         name={"Explore"} 
         component={Home}
@@ -46,7 +47,7 @@ const Tab = createBottomTabNavigator();
 
         <Tab.Screen 
         name={"Listing"} 
-        component={PostDetails}
+        component={Listing}
         options={{
             tabBarIcon:({color})=>(
             <FontAwesome5 name="clipboard-list" size={24} color="black" />

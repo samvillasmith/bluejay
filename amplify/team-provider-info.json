@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bluejay-dev-110938-authRole",
+      "UnauthRoleArn": "arn:aws:iam::324526928118:role/amplify-bluejay-dev-110938-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::324526928118:role/amplify-bluejay-dev-110938-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bluejay-dev-110938-deployment",
+      "UnauthRoleName": "amplify-bluejay-dev-110938-unauthRole",
+      "StackName": "amplify-bluejay-dev-110938",
+      "StackId": "arn:aws:cloudformation:us-east-1:324526928118:stack/amplify-bluejay-dev-110938/7a630e50-1beb-11ed-86d2-0ab8da6eeaf7",
+      "AmplifyAppId": "d3flb2vg9ghzxk"
+    },
+    "categories": {
+      "auth": {
+        "bluejay8dfcd2b0": {}
+      }
+    }
+  }
+}

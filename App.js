@@ -14,6 +14,10 @@ import {
   import Route from './src/components/navigation/Router';
   import 'react-native-gesture-handler';
 
+  import { Amplify, Auth } from 'aws-amplify';
+  import awsconfig from './src/aws-exports';
+  Amplify.configure(awsconfig);
+
 export default function App() {
   return (
     <SafeAreaView style={styles.SafeAreaViewforDroid}>
