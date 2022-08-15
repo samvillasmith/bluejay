@@ -18,9 +18,11 @@ import {
   import { ScrollView } from 'react-native-gesture-handler';
   import { FontAwesome5 } from '@expo/vector-icons';
   import { FontAwesome } from '@expo/vector-icons';
+  import { useNavigation } from '@react-navigation/native' 
  
 
 const Listing =()=>{
+  const navigation = useNavigation()
   Auth.currentAuthenticatedUser().then((user)=>{
     console.log(user.attributes.email)
   }).catch((err)=>{
@@ -35,7 +37,9 @@ const Listing =()=>{
       <View style={{margin: 5}}>
         <View>
         <Text style={{marginTop: 10}}>Upload Property Images</Text>
-        <Pressable style={{
+
+        <Pressable 
+        style={{
           justifyContent: 'center', 
           alignItems: 'center',
           margin: 20, 
@@ -46,7 +50,12 @@ const Listing =()=>{
           borderStyle: 'dashed',
           backgroundColor: colors.white,
           borderRadius: 30,
-          display: 'flex'}}>
+          display: 'flex'
+          }}
+          onPress={()=>{
+          navigation.navigate("SelectPhoto")
+        }}>
+
         <MaterialCommunityIcons name="home-group-plus" size={24} color="black" />
         </Pressable>
         </View>
