@@ -14,6 +14,7 @@ import {
   import BottomTabNav from './BottomTabNavigator';
   import { colors } from '../../../model/color';
   import SelectPhotosScreen from '../../selectPhotos';
+  import SelectCategoryScreen from '../../screens/selectCategory'
 
 const Route =()=>{
 const Stack = createStackNavigator();
@@ -29,9 +30,14 @@ const Stack = createStackNavigator();
             <Stack.Screen name='Home' 
             component={BottomTabNav} 
             options={{headerShown: false}}/>
+
             <Stack.Screen name= 'PostDetails'
              component={PostDetails} 
              options={{headerShown: false}}/>
+
+            <Stack.Screen name='SelectCategory' 
+            component={SelectCategoryScreen} 
+            options={{headerShown: false}}/>
 
              <Stack.Screen name= 'SelectPhoto'
              component={SelectPhotosScreen} 

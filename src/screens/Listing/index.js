@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { 
   StyleSheet, 
@@ -18,17 +19,35 @@ import {
   import { ScrollView } from 'react-native-gesture-handler';
   import { FontAwesome5 } from '@expo/vector-icons';
   import { FontAwesome } from '@expo/vector-icons';
-  import { useNavigation } from '@react-navigation/native' 
+  import { useNavigation } from '@react-navigation/native';
+  import { useRoute } from '@react-navigation/native';
  
 
+
 const Listing =()=>{
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   Auth.currentAuthenticatedUser().then((user)=>{
-    console.log(user.attributes.email)
+    // console.log(user.attributes.email)
   }).catch((err)=>{
     console.log(err)
     throw err;
+  }); 
+  
+  const [imageData, setImageData] = useState([]);
+  const route = useRoute();
+
+  useEffect(()=>{
+    if (!route.params) {
+      console.log('There is no data in route');
+    } else {
+      if(route.params.imageData !== undefined){
+        // console.log(route.params.imageData)
+        setImageData(route.params.imageData)
+      }
+    }
   })
+
+  
 
   return (
   <ScrollView contentContainerStyle={{flexGrow: 1}}
@@ -36,15 +55,16 @@ const Listing =()=>{
    <View>
       <View style={{margin: 5}}>
         <View>
-        <Text style={{marginTop: 10}}>Upload Property Images</Text>
+        <Text style={{marginTop: 10, marginBottom: 30}}>Upload Property Images</Text>
 
         <Pressable 
         style={{
           justifyContent: 'center', 
           alignItems: 'center',
           margin: 20, 
+          marginTop: -20,
           height: 150,
-          marginVertical: 20, 
+          marginVertical: 10, 
           width: 150,
           borderWidth: 1, 
           borderStyle: 'dashed',
@@ -58,16 +78,32 @@ const Listing =()=>{
 
         <MaterialCommunityIcons name="home-group-plus" size={24} color="black" />
         </Pressable>
+        <View>
+
+          <ScrollView horizontal = {true}>
+            {imageData && 
+              imageData.map((component, index)=>(
+              <Image 
+              key={component.id}
+              source={{uri:component.uri}} 
+              style={{height: 100, width: 100, margin: 5}}
+              />
+            ))}
+          </ScrollView>
+
+        </View>
         </View>
     </View>
-      <View style={styles.categoryStyle}>
+      <Pressable style={styles.categoryStyle} onPress={()=>{
+        navigation.navigate("SelectCategory")
+      }}>
       <View>
         <MaterialCommunityIcons name="home-city" size={24} color="black" />
       </View>
 
         <Text style={{fontSize: 22}}>Category</Text>
         <Entypo name="chevron-right" size={24} color="black" />
-      </View>
+      </Pressable>
       <View style={styles.categoryStyle}>
       <View>
         <FontAwesome5 name="map-marked-alt" size={24} color="black" />
@@ -89,13 +125,13 @@ const Listing =()=>{
         </View>
 
         <View style={{
-          margin: 0, 
+          margin: 10, 
           borderRadius: 30,
           backgroundColor: colors.primary, 
           alignItems: 'center', 
           paddingLeft: 20,
-          marginTop: 20,
-          marginBottom: 20}}>
+          marginTop: 10,
+          marginBottom: 10}}>
           <Text style={{color: colors.secondary, paddingVertical: 10, fontSize: 17, fontWeight: 'bold'}}>
           POST NEST</Text>
         </View>

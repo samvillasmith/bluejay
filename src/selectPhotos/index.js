@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 const SelectPhotosScreen = () => {
   const navigation = useNavigation();
   const onSuccess = (data: any) => {
-    navigation.navigate("AddItemDetails", { imageData: data });
+    navigation.navigate("Listing", { imageData: data });
   };
 
   const widgetErrors = useMemo(
@@ -53,7 +53,7 @@ const SelectPhotosScreen = () => {
   };
 
   const _buttonStyle = {
-    backgroundColor: "orange",
+    backgroundColor: "blue",
     borderRadius: 5,
   };
 
@@ -69,7 +69,7 @@ const SelectPhotosScreen = () => {
       buttonTextStyle: _textStyle,
       buttonStyle: _buttonStyle,
       onBack: () => {
-        navigation.navigate("AddItemDetails");
+        navigation.navigate("Listing");
       },
       onSuccess: (e: any) => onSuccess(e),
     }),
