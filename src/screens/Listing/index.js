@@ -10,7 +10,7 @@ import {
   TextInput,
   Pressable} from 'react-native';
   import { withAuthenticator } from 'aws-amplify-react-native';
-  import { Auth, Storage } from 'aws-amplify';
+  import { Auth, Storage, API, graphqlOperation } from 'aws-amplify';
   import { colors } from '../../../model/color';
   import { MaterialCommunityIcons } from '@expo/vector-icons';
   import { Ionicons } from '@expo/vector-icons';
@@ -23,6 +23,7 @@ import {
   import { useRoute } from '@react-navigation/native';
   import 'react-native-get-random-values';
   import {v4 as uuidv4} from 'uuid';
+  import { createListing } from '../../graphql/mutations'
  
 
 
@@ -34,8 +35,10 @@ const Listing =()=>{
   const [description, setDescription] = useState('')
   const [val, setVal] = useState('')
 
+  const [userID, setUserID] = useState('');
+
   Auth.currentAuthenticatedUser().then((user)=>{
-    // console.log(user.attributes.email)
+    setUserID(user.attributes.sub)
   }).catch((err)=>{
     console.log(err)
     throw err;
@@ -76,6 +79,26 @@ const Listing =()=>{
       const key = `${uuidv4()}.${extension}`; 
       imageAllUrl.push({imageUri: key});
       await Storage.put(key, blob);
+      if(imageData.length == index + 1){
+        const postData = {
+          title: title,
+          categoryName: category.catName,
+          categoryID: category.catID,
+          description: description,
+          images: JSON.stringify(imageAllUrl),
+          locationID: location.locationID,
+          locationName: location.locationName,
+          rentValue: val,
+          userID: userID,
+          commonID: "1"
+        };
+        console.log(postData);
+        await API.graphql({
+          query: createListing,
+          variables: { input: postData },
+            authMode: 'AMAZON_COGNITO_USER_POOLS',
+        });
+      }
     });
   };
   
@@ -150,7 +173,6 @@ const Listing =()=>{
             placeholder="Add Title" 
             onChangeText={(text)=>{
             setTitle(text);
-            console.log(title)
           }}></TextInput>
         </View>
         <View style={styles.viewInputStyle}>
@@ -160,7 +182,6 @@ const Listing =()=>{
           multiline numberOfLines={3}
           onChangeText={(text)=>{
             setDescription(text);
-            console.log(description);
           }}></TextInput>
         </View>
         <View style={styles.shortField}>
@@ -171,7 +192,6 @@ const Listing =()=>{
           style={{marginRight: 50, fontSize: 20, marginLeft: 7}}
           onChangeText={(text)=>{
             setVal(text);
-            console.log(val);
           }}></TextInput>
         </View>
 
@@ -179,6 +199,7 @@ const Listing =()=>{
           onPress={()=>{
             storeToDB()
           }}
+          android_ripple={{ color: 'grey' }}
           style={{
           margin: 10, 
           borderRadius: 30,

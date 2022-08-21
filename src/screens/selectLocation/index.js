@@ -59,7 +59,7 @@ const SelectLocationScreen = () => {
         style={{
           fontSize: 20,
           margin: 20}}>
-        Choose a Rental Category
+        Choose a Location
       </Text>
       {locationState.names.map((item, index)=>(
         <Pressable 

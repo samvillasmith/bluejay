@@ -20,6 +20,7 @@ type Listing @model
   images: String
   locationID: String
   locationName: String
+  rentValue: String
   userID: ID
   commonID: String 
     @index(
