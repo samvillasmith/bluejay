@@ -1,16 +1,17 @@
 import React, { useMemo, useState } from "react";
-import { Text, View, StyleSheet, SafeAreaView, Alert, Pressable, Entypo, ScrollView } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, Alert, Pressable, ScrollView } from "react-native";
 import { AssetsSelector } from "expo-images-picker";
-import { Ionicons, AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, AntDesign, MaterialIcons, Entypo } from "@expo/vector-icons";
 import { MediaType } from "expo-media-library";
 import { useNavigation } from "@react-navigation/native";
 import styles from './styles'
+import { colors } from "../../../model/color";
 
 
 const SelectCategoryScreen = () => {
   const navigation = useNavigation();
  
-  const [categoryState, setCategoryState] = useState({
+  const [catState, setCatState] = useState({
 
     names: [
      {
@@ -31,7 +32,7 @@ const SelectCategoryScreen = () => {
             color="black"
           />
         ),
-        name: "Vehicle",
+        name: "House",
       },
  {
         id: 2,
@@ -70,15 +71,32 @@ const SelectCategoryScreen = () => {
 
  return (
     <ScrollView>
-      {categoryState.names.map((item, index)=>(
+      <Text
+        style={{
+          fontSize: 20,
+          margin: 20}}>
+        Choose a Rental Category
+      </Text>
+      {catState.names.map((item, index)=>(
         <Pressable 
         key={item.id}
+        android_ripple={{color: colors.grey}}
+        style={{
+          padding: 15, 
+          backgroundColor: colors.primary,
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          flexDirection: 'row',
+          borderBottomWidth: 1,
+          borderBottomColor: colors.grey,
+          paddingLeft: 20}}
         onPress={()=>{
           navigation.navigate("Listing", {
-          categoryID: item.id,
-          categoryName: item.name,
+          catID: item.id,
+          catName: item.name,
           });
         }}>
+          {item.fullIcon}
           <Text>{item.name}</Text>
         </Pressable>
       ))}

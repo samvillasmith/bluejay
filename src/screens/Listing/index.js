@@ -26,6 +26,12 @@ import {
 
 const Listing =()=>{
   const navigation = useNavigation();
+  const [category, setCategory] = useState({catID: 0, catName:"Category"});
+  const [location, setLocation] = useState({locationID: 0, locationName:"Location"});
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [val, setVal] = useState('')
+
   Auth.currentAuthenticatedUser().then((user)=>{
     // console.log(user.attributes.email)
   }).catch((err)=>{
@@ -43,10 +49,18 @@ const Listing =()=>{
       if(route.params.imageData !== undefined){
         // console.log(route.params.imageData)
         setImageData(route.params.imageData)
+      } else if(route.params.catID !== undefined){
+        // console.log(route.params)
+        setCategory(route.params)
+      } else if(route.params.locationID !== undefined){
+        // console.log(route.params)
+        setLocation(route.params)
+      }  else {
+        console.log("Params is not empty")
       }
     }
   })
-
+  
   
 
   return (
@@ -55,7 +69,7 @@ const Listing =()=>{
    <View>
       <View style={{margin: 5}}>
         <View>
-        <Text style={{marginTop: 10, marginBottom: 30}}>Upload Property Images</Text>
+        <Text style={{marginTop: 10, marginBottom: 30}}>Upload Images of Something to Rent</Text>
 
         <Pressable 
         style={{
@@ -101,27 +115,47 @@ const Listing =()=>{
         <MaterialCommunityIcons name="home-city" size={24} color="black" />
       </View>
 
-        <Text style={{fontSize: 22}}>Category</Text>
+        <Text style={{fontSize: 22}}>{category.catName}</Text>
         <Entypo name="chevron-right" size={24} color="black" />
       </Pressable>
-      <View style={styles.categoryStyle}>
+      <Pressable onPress={()=>
+          navigation.navigate('SelectLocation')
+            } style={styles.categoryStyle}>
       <View>
         <FontAwesome5 name="map-marked-alt" size={24} color="black" />
       </View>
-        <Text style={{fontSize: 22}}>Location</Text>
+        <Text style={{fontSize: 22}}>{location.locationName}</Text>
         <Entypo name="chevron-right" size={24} color="black" />
-      
-        
-      </View>
+      </Pressable>
         <View style={styles.viewInputStyle}>
-          <TextInput style={[styles.inputTextStyle, { textAlignVertical: 'top' }]} placeholder="Add Title"></TextInput>
+          <TextInput 
+            style={styles.inputTextStyle} 
+            placeholder="Add Title" 
+            onChangeText={(text)=>{
+            setTitle(text);
+            console.log(title)
+          }}></TextInput>
         </View>
         <View style={styles.viewInputStyle}>
-          <TextInput style={[styles.inputTextStyle, { textAlignVertical: 'top' }]} placeholder="Enter Description" multiline numberOfLines={3}></TextInput>
+          <TextInput 
+          style={styles.inputTextStyle} 
+          placeholder="Enter Description" 
+          multiline numberOfLines={3}
+          onChangeText={(text)=>{
+            setDescription(text);
+            console.log(description);
+          }}></TextInput>
         </View>
         <View style={styles.shortField}>
           <FontAwesome name="dollar" size={24} color="black" style={{marginLeft: 20}}/>
-          <TextInput  placeholder="Enter Price" style={{marginRight: 50, fontSize: 20, marginLeft: 7}}></TextInput>
+          <TextInput 
+          placeholder="Enter Price" 
+          keyboardType='numeric'
+          style={{marginRight: 50, fontSize: 20, marginLeft: 7}}
+          onChangeText={(text)=>{
+            setVal(text);
+            console.log(val);
+          }}></TextInput>
         </View>
 
         <View style={{

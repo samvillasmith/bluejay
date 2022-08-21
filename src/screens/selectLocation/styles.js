@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
       fontSize: 22,
       paddingRight: 7,
       alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%'
+      justifyContent: 'center'
     },
     descriptionTextStyle:{
       fontSize: 22,
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       alignItems: 'center',
       margin: 10,
-      paddingVertical: 5,
+      paddingVertical: 10,
       borderRadius: 30,
       padding: 5,
       paddingLeft: 20
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
           display: 'flex',
           alignItems: 'center',
           margin: 10,
-          paddingVertical: -5,
+          paddingVertical: 10,
           borderRadius: 30,
           paddingLeft: 20,
           paddingRight: 10
@@ -65,5 +64,9 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         padding: 5
       },
+      catIcon: {
+        marginRight: 10,
+        
+      }
     });
 export default styles;
