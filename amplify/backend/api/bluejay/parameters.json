@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "bluejay",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authbluejay8dfcd2b0",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2022-08-21T02:39:52.060Z"
+}
