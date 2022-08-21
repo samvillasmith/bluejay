@@ -6,7 +6,7 @@ export const getListing = /* GraphQL */ `
     getListing(id: $id) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images
@@ -30,7 +30,7 @@ export const listListings = /* GraphQL */ `
       items {
         id
         title
-        category
+        categoryName
         categoryID
         description
         images
@@ -66,7 +66,7 @@ export const getListingByCreatedAt = /* GraphQL */ `
       items {
         id
         title
-        category
+        categoryName
         categoryID
         description
         images

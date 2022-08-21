@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "bluejay8dfcd2b0": {}
+        "bluejay8dfcd2b0": {},
+        "true": {}
       }
     }
   }

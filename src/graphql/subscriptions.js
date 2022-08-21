@@ -6,7 +6,7 @@ export const onCreateListing = /* GraphQL */ `
     onCreateListing(owner: $owner) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images
@@ -25,7 +25,7 @@ export const onUpdateListing = /* GraphQL */ `
     onUpdateListing(owner: $owner) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images
@@ -44,7 +44,7 @@ export const onDeleteListing = /* GraphQL */ `
     onDeleteListing(owner: $owner) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images

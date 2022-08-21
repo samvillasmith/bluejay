@@ -10,7 +10,7 @@ import {
   TextInput,
   Pressable} from 'react-native';
   import { withAuthenticator } from 'aws-amplify-react-native';
-  import { Auth } from 'aws-amplify';
+  import { Auth, Storage } from 'aws-amplify';
   import { colors } from '../../../model/color';
   import { MaterialCommunityIcons } from '@expo/vector-icons';
   import { Ionicons } from '@expo/vector-icons';
@@ -21,6 +21,8 @@ import {
   import { FontAwesome } from '@expo/vector-icons';
   import { useNavigation } from '@react-navigation/native';
   import { useRoute } from '@react-navigation/native';
+  import 'react-native-get-random-values';
+  import {v4 as uuidv4} from 'uuid';
  
 
 
@@ -60,7 +62,22 @@ const Listing =()=>{
       }
     }
   })
+
+  const imageAllUrl =[];
   
+  const storeToDB = async ()=>{
+    imageData && 
+    imageData.map(async (component, index)=>{
+      const imageUrl = component.uri;
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const urlParts = imageUrl.split(".");
+      const extension = urlParts[urlParts.length - 1];
+      const key = `${uuidv4()}.${extension}`; 
+      imageAllUrl.push({imageUri: key});
+      await Storage.put(key, blob);
+    });
+  };
   
 
   return (
@@ -158,7 +175,11 @@ const Listing =()=>{
           }}></TextInput>
         </View>
 
-        <View style={{
+        <Pressable 
+          onPress={()=>{
+            storeToDB()
+          }}
+          style={{
           margin: 10, 
           borderRadius: 30,
           backgroundColor: colors.primary, 
@@ -167,8 +188,8 @@ const Listing =()=>{
           marginTop: 10,
           marginBottom: 10}}>
           <Text style={{color: colors.secondary, paddingVertical: 10, fontSize: 17, fontWeight: 'bold'}}>
-          POST NEST</Text>
-        </View>
+          POST</Text>
+        </Pressable>
    </View>
 </ScrollView>
   );

@@ -9,7 +9,7 @@ export const createListing = /* GraphQL */ `
     createListing(input: $input, condition: $condition) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images
@@ -31,7 +31,7 @@ export const updateListing = /* GraphQL */ `
     updateListing(input: $input, condition: $condition) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images
@@ -53,7 +53,7 @@ export const deleteListing = /* GraphQL */ `
     deleteListing(input: $input, condition: $condition) {
       id
       title
-      category
+      categoryName
       categoryID
       description
       images

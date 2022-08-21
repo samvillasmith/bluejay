@@ -1,0 +1,16 @@
+{
+  "resourceName": "bluejayProject",
+  "policyUUID": "fa85ab49",
+  "bucketName": "bluejaybucket7",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
