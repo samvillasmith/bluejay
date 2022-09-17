@@ -38,6 +38,7 @@ const Listing =()=>{
   const [postProcessing, setProcessing] = useState(false);
   const [postSuccess, setPostSuccess] = useState('')
   const [userID, setUserID] = useState('');
+  const [userEmail, setEmail] = useState('');
 
   useEffect(()=>{
       if(postSuccess !== ""){
@@ -49,11 +50,12 @@ const Listing =()=>{
               {text: 'Ok', onPress:()=>navigation.navigate('Home', {screen: 'Explore'})},
             ]);
            }
-           }, [postSuccess, postProcessing]);
+           }, [postSuccess, postProcessing ]);
     
 
   Auth.currentAuthenticatedUser().then((user)=>{
-    setUserID(user.attributes.sub)
+    setUserID(user.attributes.sub);
+    setEmail(user.attributes.email);
   }).catch((err)=>{
     console.log(err)
     throw err;
@@ -104,6 +106,7 @@ const Listing =()=>{
           images: JSON.stringify(imageAllUrl),
           locationID: location.locationID,
           locationName: location.locationName,
+          owner: userEmail,
           rentValue: val,
           userID: userID,
           commonID: "1"

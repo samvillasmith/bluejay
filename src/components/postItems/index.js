@@ -14,15 +14,18 @@ import { useState } from 'react';
     const navigation = useNavigation()
     const lonePost = props.post;
     const [images, setImages] = useState(JSON.parse(lonePost.images))
-    console.log(images)
+    // console.log(lonePost)
     return (
         <Pressable onPress={()=>{
-          navigation.navigate("PostDetails")
+          navigation.navigate("PostDetails", {
+            postInfo: lonePost,
+          });
         }} style={styles.container}>
        
         <View style={styles.postWrap}>
           <Image 
-          source={{uri:"https://d1jycl47tmd7cw.cloudfront.net/fit-in/400x400/public/"+images[0].imageUri}} 
+          source={{
+            uri:"https://d1jycl47tmd7cw.cloudfront.net/fit-in/400x400/public/"+images[0].imageUri}} 
           style={styles.postImage}></Image>
           <View style={styles.postContentWrap}>
             <View>
