@@ -4,7 +4,8 @@ import { colors } from "../../../model/color";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#9ee8ff"
+        backgroundColor: "#9ee8ff",
+        marginBottom: 10
       },
       postWrap: {
         display: "flex", 
@@ -17,7 +18,8 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 1},
         shadowRadius: 2,
         shadowOpacity: 0.8,
-        elevation: 5
+        elevation: 5,
+        overflow: 'hidden'
       },
       postImage: {
           height: 100, 

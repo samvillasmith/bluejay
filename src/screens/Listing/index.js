@@ -8,7 +8,8 @@ import {
   SafeAreaView, 
   Platform, 
   TextInput,
-  Pressable} from 'react-native';
+  Pressable,
+  Alert} from 'react-native';
   import { withAuthenticator } from 'aws-amplify-react-native';
   import { Auth, Storage, API, graphqlOperation } from 'aws-amplify';
   import { colors } from '../../../model/color';
@@ -31,11 +32,25 @@ const Listing =()=>{
   const navigation = useNavigation();
   const [category, setCategory] = useState({catID: 0, catName:"Category"});
   const [location, setLocation] = useState({locationID: 0, locationName:"Location"});
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [val, setVal] = useState('')
-
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [val, setVal] = useState('');
+  const [postProcessing, setProcessing] = useState(false);
+  const [postSuccess, setPostSuccess] = useState('')
   const [userID, setUserID] = useState('');
+
+  useEffect(()=>{
+      if(postSuccess !== ""){
+        setProcessing(false);
+        Alert.alert(
+          'Success',
+          postSuccess,
+            [
+              {text: 'Ok', onPress:()=>navigation.navigate('Home', {screen: 'Explore'})},
+            ]);
+           }
+           }, [postSuccess, postProcessing]);
+    
 
   Auth.currentAuthenticatedUser().then((user)=>{
     setUserID(user.attributes.sub)
@@ -69,6 +84,7 @@ const Listing =()=>{
   const imageAllUrl =[];
   
   const storeToDB = async ()=>{
+    setProcessing(true)
     imageData && 
     imageData.map(async (component, index)=>{
       const imageUrl = component.uri;
@@ -92,12 +108,14 @@ const Listing =()=>{
           userID: userID,
           commonID: "1"
         };
-        console.log(postData);
+       
         await API.graphql({
           query: createListing,
           variables: { input: postData },
             authMode: 'AMAZON_COGNITO_USER_POOLS',
         });
+        setProcessing(false)
+        setPostSuccess('Ad Posted!')
       }
     });
   };
@@ -209,7 +227,7 @@ const Listing =()=>{
           marginTop: 10,
           marginBottom: 10}}>
           <Text style={{color: colors.secondary, paddingVertical: 10, fontSize: 17, fontWeight: 'bold'}}>
-          POST</Text>
+          {postProcessing ? "Posting rental.." : "POST AD"}</Text>
         </Pressable>
    </View>
 </ScrollView>
