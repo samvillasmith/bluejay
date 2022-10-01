@@ -32,7 +32,7 @@ import { useState } from 'react';
                 <Text style={{fontWeight: "bold"}}>{lonePost.title}</Text>
                 <Text style={styles.postTitle}>{lonePost.locationName}</Text>
             </View>
-            <Text style={styles.postValue}>{lonePost.rentValue}</Text>
+            <Text style={styles.postValue}>${lonePost.rentValue}/day</Text>
           </View>
       </View>
     </Pressable>

@@ -229,7 +229,10 @@ const Listing =()=>{
           paddingLeft: 20,
           marginTop: 10,
           marginBottom: 10}}>
-          <Text style={{color: colors.secondary, paddingVertical: 10, fontSize: 17, fontWeight: 'bold'}}>
+          <Text style={{color: colors.secondary, 
+            paddingVertical: 10, 
+            fontSize: 17, 
+            fontWeight: 'bold'}}>
           {postProcessing ? "Posting rental.." : "POST AD"}</Text>
         </Pressable>
    </View>
